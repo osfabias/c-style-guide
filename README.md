@@ -170,6 +170,16 @@ confusion should be rewritten so that it becomes trivially valid. Many
 developers have been caught assuming that a warning was invalid, only to
 realize later that it was valid for less obvious reasons.
 
+### 11. Anything is immutable by default 🔒
+
+**Rule**: Mark all variables and pointers as `const` whenever their value is not intended to change.
+
+**Rationale**: Reducing the number of mutable variables makes code easier to reason about and debug.
+When a variable is const, you can be confident its value never changes, which narrows down the places 
+where state can be modified and potential bugs can occur. Additionally, compilers can perform certain
+optimizations for const data — for example, placing it in read-only memory or inlining
+constant expressions — which may improve performance.
+
 ## List of references
 
 * [NASA C Style Guide](https://ntrs.nasa.gov/api/citations/19950022400/downloads/19950022400.pdf)
